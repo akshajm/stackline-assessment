@@ -6,15 +6,3 @@
 .homepage > div {
   margin: 2%;
 }
-
-.homepage__sales {
-  background-color: white;
-}
-
-.homepage__sales {
-  flex-direction: column;
-}
-
-.homepage__sales > div {
-  margin: 2%;
-}

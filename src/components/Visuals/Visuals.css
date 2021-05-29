@@ -1,0 +1,9 @@
+.homepage__sales {
+  flex-direction: column;
+  width: 100%;
+}
+
+.homepage__sales > div {
+  /* margin: 2%; */
+  background-color: white;
+}
