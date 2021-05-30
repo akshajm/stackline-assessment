@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import all_sales from "./all_sales";
+import { all_sales } from "./all_sales";
 import sort_ascending from "./sort_ascending";
 
 const root_reducer = combineReducers({

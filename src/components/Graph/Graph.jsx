@@ -64,8 +64,7 @@ const Graph = () => {
 
   return (
     <div className="graph">
-      {console.log(x_axis)}
-      <Line data={plot} height={450} label="AKshaj" options={options} />
+      <Line data={plot} height={450} options={options} />
     </div>
   );
 };

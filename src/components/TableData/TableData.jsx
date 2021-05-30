@@ -13,7 +13,8 @@ import { useSelector, useDispatch } from "react-redux";
 const TableData = () => {
   const dispatch = useDispatch();
   const table_rows = [];
-  const sales = useSelector((state) => state.all_sales);
+  let item = useSelector((state) => state.all_sales);
+  let sales = item["sales"];
   const is_ascending = useSelector((state) => state.sort_ascending);
   sales.forEach((sale) => {
     var date = moment(sale.weekEnding).format("MM-DD-YYYY");
@@ -55,7 +56,7 @@ const TableData = () => {
       new_data.sort((a, b) => (a[sorter] > b[sorter] ? -1 : 1));
     }
     dispatch(sort_ascending());
-    dispatch(all_sales(new_data));
+    dispatch(all_sales({ ...item, sales: new_data }));
   };
 
   return (
