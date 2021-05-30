@@ -4,3 +4,9 @@ export const all_sales = (sales) => {
     payload: sales,
   };
 };
+
+export const sort_ascending = () => {
+  return {
+    type: "SORT_ASCENDING",
+  };
+};

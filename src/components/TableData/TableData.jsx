@@ -7,13 +7,14 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import NumberFormat from "react-number-format";
 import moment from "moment";
-import { all_sales } from "../../actions/index";
+import { all_sales, sort_ascending } from "../../actions/index";
 import { useSelector, useDispatch } from "react-redux";
 
 const TableData = () => {
   const dispatch = useDispatch();
   const table_rows = [];
   const sales = useSelector((state) => state.all_sales);
+  const is_ascending = useSelector((state) => state.sort_ascending);
   sales.forEach((sale) => {
     var date = moment(sale.weekEnding).format("MM-DD-YYYY");
     var retail = (
@@ -48,9 +49,12 @@ const TableData = () => {
   const sort_rows = (event) => {
     let sorter = event.target.value;
     let new_data = [...sales];
-    new_data.sort((a, b) =>
-      a[sorter] > b[sorter] ? 1 : b[sorter] > a[sorter] ? -1 : 0
-    );
+    if (is_ascending) {
+      new_data.sort((a, b) => (a[sorter] > b[sorter] ? 1 : -1));
+    } else {
+      new_data.sort((a, b) => (a[sorter] > b[sorter] ? -1 : 1));
+    }
+    dispatch(sort_ascending());
     dispatch(all_sales(new_data));
   };
 
@@ -63,6 +67,7 @@ const TableData = () => {
               {Object.keys(sales[0]).map((key) => (
                 <TableCell align="center" style={{ padding: "10px" }}>
                   <input
+                    style={{ cursor: "pointer" }}
                     type="button"
                     onClick={(event) => {
                       sort_rows(event);
