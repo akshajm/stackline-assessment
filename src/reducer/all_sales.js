@@ -14,4 +14,8 @@ export const all_sales = (state = sales[0], action) => {
 };
 
 export const item_data = { id, image, title, subtitle, tags };
+
+export const graph_data = INITIAL_ITEM["sales"];
+
+// export const graph_data;
 // export default all_sales;

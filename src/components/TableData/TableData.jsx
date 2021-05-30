@@ -64,10 +64,15 @@ const TableData = () => {
       <TableContainer>
         <Table>
           <TableHead>
-            <TableRow style={{ padding: "0px" }}>
-              {Object.keys(sales[0]).map((key) => (
-                <TableCell align="center" style={{ padding: "10px" }}>
+            <TableRow key={0} style={{ padding: "0px" }}>
+              {Object.keys(sales[0]).map((key, index) => (
+                <TableCell
+                  key={index}
+                  align="center"
+                  style={{ padding: "10px" }}
+                >
                   <input
+                    key={index}
                     style={{ cursor: "pointer" }}
                     type="button"
                     onClick={(event) => {
@@ -80,10 +85,12 @@ const TableData = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {table_rows.map((sale) => (
-              <TableRow>
-                {Object.values(sale).map((values) => (
-                  <TableCell align="center">{values}</TableCell>
+            {table_rows.map((sale, index) => (
+              <TableRow key={index}>
+                {Object.values(sale).map((values, index) => (
+                  <TableCell key={index} align="center">
+                    {values}
+                  </TableCell>
                 ))}
               </TableRow>
             ))}

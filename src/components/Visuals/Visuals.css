@@ -3,7 +3,7 @@
   width: 100%;
 }
 
-.homepage__sales > div {
-  /* margin: 2%; */
+.homepage__sales > div,
+h6 {
   background-color: white;
 }

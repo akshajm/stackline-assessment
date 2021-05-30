@@ -26,3 +26,7 @@
 .sidebar {
   background-color: white;
 }
+
+p {
+  padding: 10px;
+}
