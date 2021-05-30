@@ -1,5 +1,4 @@
 import "./TableData.css";
-import Sales from "../../data/stackline_frontend_assessment_data_2021";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -8,10 +7,13 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import NumberFormat from "react-number-format";
 import moment from "moment";
+import { all_sales } from "../../actions/index";
+import { useSelector, useDispatch } from "react-redux";
 
 const TableData = () => {
+  const dispatch = useDispatch();
   const table_rows = [];
-  let sales = Sales[0].sales;
+  const sales = useSelector((state) => state.all_sales);
   sales.forEach((sale) => {
     var date = moment(sale.weekEnding).format("MM-DD-YYYY");
     var retail = (
@@ -45,10 +47,11 @@ const TableData = () => {
 
   const sort_rows = (event) => {
     let sorter = event.target.value;
-    sales.sort((a, b) =>
+    let new_data = [...sales];
+    new_data.sort((a, b) =>
       a[sorter] > b[sorter] ? 1 : b[sorter] > a[sorter] ? -1 : 0
     );
-    console.log(sales);
+    dispatch(all_sales(new_data));
   };
 
   return (
@@ -57,7 +60,7 @@ const TableData = () => {
         <Table>
           <TableHead>
             <TableRow style={{ padding: "0px" }}>
-              {Object.keys(Sales[0].sales[0]).map((key) => (
+              {Object.keys(sales[0]).map((key) => (
                 <TableCell align="center" style={{ padding: "10px" }}>
                   <input
                     type="button"
