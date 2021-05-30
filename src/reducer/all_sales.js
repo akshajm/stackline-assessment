@@ -4,7 +4,7 @@ const INITIAL_ITEM = sales[0];
 
 const { id, image, title, subtitle, tags } = INITIAL_ITEM;
 
-export const all_sales = (state = sales[0], action) => {
+export const all_sales = (state = INITIAL_ITEM, action) => {
   switch (action.type) {
     case "UPDATE_STATES":
       return action.payload;
@@ -14,8 +14,4 @@ export const all_sales = (state = sales[0], action) => {
 };
 
 export const item_data = { id, image, title, subtitle, tags };
-
 export const graph_data = INITIAL_ITEM["sales"];
-
-// export const graph_data;
-// export default all_sales;
