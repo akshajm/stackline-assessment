@@ -35,7 +35,6 @@ const Graph = () => {
   let wholesale_sales = [];
   Sales[0].sales.forEach((sale) => {
     const [, month] = sale.weekEnding.split("-");
-
     x_axis.push(moment(month, "M").format("MMMM"));
     retail_sales.push(sale.retailSales);
     wholesale_sales.push(sale.wholesaleSales);
