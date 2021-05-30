@@ -11,7 +11,8 @@ import moment from "moment";
 
 const TableData = () => {
   const table_rows = [];
-  Sales[0].sales.forEach((sale) => {
+  let sales = Sales[0].sales;
+  sales.forEach((sale) => {
     var date = moment(sale.weekEnding).format("MM-DD-YYYY");
     var retail = (
       <NumberFormat
@@ -42,14 +43,30 @@ const TableData = () => {
     table_rows.push({ date, retail, wholesale, units_sold, retail_margin });
   });
 
+  const sort_rows = (event) => {
+    let sorter = event.target.value;
+    sales.sort((a, b) =>
+      a[sorter] > b[sorter] ? 1 : b[sorter] > a[sorter] ? -1 : 0
+    );
+    console.log(sales);
+  };
+
   return (
     <div className="table">
       <TableContainer>
         <Table>
           <TableHead>
-            <TableRow>
+            <TableRow style={{ padding: "0px" }}>
               {Object.keys(Sales[0].sales[0]).map((key) => (
-                <TableCell align="center">{key}</TableCell>
+                <TableCell align="center" style={{ padding: "10px" }}>
+                  <input
+                    type="button"
+                    onClick={(event) => {
+                      sort_rows(event);
+                    }}
+                    value={key}
+                  />
+                </TableCell>
               ))}
             </TableRow>
           </TableHead>

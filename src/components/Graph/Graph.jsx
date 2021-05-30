@@ -49,7 +49,7 @@ const Graph = () => {
         // backgroundColor: "rgb(25, 41, 58)",
         data: retail_sales,
         lineTension: 0.5,
-        borderColor: "rgb(25, 41, 58)",
+        borderColor: "rgb(0, 0, 255)",
       },
       {
         label: "wholesale sales",
@@ -65,7 +65,7 @@ const Graph = () => {
   return (
     <div className="graph">
       {console.log(x_axis)}
-      <Line data={plot} height={500} label="AKshaj" options={options} />
+      <Line data={plot} height={450} label="AKshaj" options={options} />
     </div>
   );
 };
