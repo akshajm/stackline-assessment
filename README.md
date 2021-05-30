@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+To view the project go to: https://akshajm.github.io/stackline-assessment/
 
 ## Available Scripts
 
